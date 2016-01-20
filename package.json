@@ -1,0 +1,15 @@
+{
+  "name": "giffter",
+  "version": "1.0.0",
+  "description": "pmi-ux-wdi collab",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^0.8.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
