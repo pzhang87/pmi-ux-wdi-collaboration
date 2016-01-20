@@ -1,3 +1,3 @@
-# PMI-UX-WDI Collaboration Project
+# Giffter
 
-aka Giffter
+PMI-UX-WDI collaboration project.
