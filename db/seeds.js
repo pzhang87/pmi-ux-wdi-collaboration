@@ -1,8 +1,8 @@
-var mongoose = require('mongoose')
-var conn = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/giffter')
-var UserModel = require("../models/user")
-var ListModel = require("../models/list")
-var ItemModel = require("../models/item")
+var mongoose = require('mongoose');
+var conn = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/giffter');
+var UserModel = require("../models/user");
+var ListModel = require("../models/list");
+var ItemModel = require("../models/item");
 
 // conn.on("error", function(err){
 //   console.log("Oops! Mongo threw an error. Is `mongod` running?");
@@ -11,21 +11,21 @@ var ItemModel = require("../models/item")
 // });
 
 ListModel.remove({}, function(err){
-  console.log(err)
-})
+  console.log(err);
+});
 ItemModel.remove({}, function(err){
-  console.log(err)
-})
+  console.log(err);
+});
 UserModel.remove({}, function(err){
-  console.log(err)
-})
+  console.log(err);
+});
 
 var newList = new ListModel({
   for: "Mom",
   items: [],
   owner: ""
-})
-newList.save().then(console.log("saved"))
+});
+newList.save().then(console.log("saved"));
 
 var newUser = new UserModel({
   local: {
@@ -33,8 +33,8 @@ var newUser = new UserModel({
     password: "asdf"
   },
   lists: []
-})
-newUser.save().then(console.log("saved"))
+});
+newUser.save().then(console.log("saved"));
 
 var newItem = new ItemModel({
     name: "item name",
@@ -43,4 +43,4 @@ var newItem = new ItemModel({
     image: "http://placecage.com/200/200",
     amazonUrl: "http://google.com",
   });
-newItem.save().then(console.log("saved"))
+newItem.save().then(console.log("saved"));

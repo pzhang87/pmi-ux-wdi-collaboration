@@ -16,25 +16,25 @@ var Item = require("./models/item");
 
 // index route
 app.get("/", function(req, res){
-  res.send("giffter backend")
-})
+  res.send("giffter backend");
+});
 
 app.get("/users", function(req, res){
   User.find({}).then(function(users){
     res.json(users);
-  })
+  });
 });
 
 app.get("/items", function(req, res){
   Item.find({}).then(function(items){
     res.json(items);
-  })
+  });
 });
 
 app.get("/lists", function(req, res){
   List.find({}).then(function(lists){
     res.json(lists);
-  })
+  });
 });
 
 // listening on port

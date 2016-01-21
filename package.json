@@ -4,7 +4,9 @@
   "description": "pmi-ux-wdi collab",
   "main": "index.js",
   "dependencies": {
-    "bcrypt": "^0.8.5"
+    "bcrypt": "^0.8.5",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.6"
   },
   "devDependencies": {},
   "scripts": {
