@@ -2,6 +2,8 @@ var express = require('express'),
     router = express.Router(),
     passport = require('passport');
     User = require('../models/user.js');
+    List = require('../models/list.js');
+    Item = require('../models/item.js');
 
 
 router.post('/register', function(req, res) {
@@ -42,6 +44,19 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 router.get('/logout', function(req, res) {
   req.logout();
   res.status(200).json({status: 'Bye!'});
+});
+
+// LIST & ITEM ROUTES ======================================
+router.get("/items", function(req, res){
+  Item.find({}).then(function(items){
+    res.json(items);
+  });
+});
+
+router.get("/lists", function(req, res){
+  List.find({}).then(function(lists){
+    res.json(lists);
+  });
 });
 
 module.exports = router;
