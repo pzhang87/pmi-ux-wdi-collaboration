@@ -20,12 +20,12 @@
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: '/partials/home.html',
+        templateUrl: 'src/partials/home.html',
         access: {restricted: false}
       })
       .state('login', {
         url: '/login',
-        templateUrl: '/js/auth/login.html',
+        templateUrl: 'src/js/auth/login.html',
         controller: 'loginController',
         access: {restricted: false}
       })
@@ -36,7 +36,7 @@
       })
       .state('register', {
         url: '/register',
-        templateUrl: '/js/auth/register.html',
+        templateUrl: 'src/js/auth/register.html',
         controller: 'registerController',
         access: {restricted: true}
       })
