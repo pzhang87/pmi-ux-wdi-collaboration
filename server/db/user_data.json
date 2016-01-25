@@ -1,0 +1,12 @@
+[
+  {
+    "username" : "andre@codedre.com",
+    "password" : "String",
+    "facebook" : {
+      "id"    : "String",
+      "token" : "String",
+      "name"  : "Andre Johnson",
+      "email" : "andre@codedre.com"
+    }
+  }
+]

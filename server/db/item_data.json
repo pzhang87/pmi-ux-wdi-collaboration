@@ -1,0 +1,9 @@
+[
+  {
+    "name"      : "String",
+    "price"     : "Number",
+    "thumbnail" : "String",
+    "image"     : "String",
+    "amazonUrl" : "String"
+  }
+]

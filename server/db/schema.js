@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.createConnection(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/giffter');
+mongoose.createConnection(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/giffter');
 
-var Schema = mongoose.Schema,
-    ObjectId = Schema.Types.ObjectId
-
+var Schema    = mongoose.Schema,
+    ObjectId  = Schema.Types.ObjectId;
 
 //define schema for item
 var ItemSchema = new Schema({
@@ -22,5 +21,5 @@ var ListSchema = new Schema({
     owner: String
   });
 
-var ListModel = mongoose.model("List", ListSchema)
-var ItemModel = mongoose.model("Item", ItemSchema)
+var ListModel = mongoose.model("List", ListSchema);
+var ItemModel = mongoose.model("Item", ItemSchema);

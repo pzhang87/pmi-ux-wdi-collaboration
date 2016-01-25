@@ -1,4 +1,4 @@
-require("../db/schema.js");
+require("../db/schema");
 var mongoose = require("mongoose");
 
 var ItemModel = mongoose.model("Item");
