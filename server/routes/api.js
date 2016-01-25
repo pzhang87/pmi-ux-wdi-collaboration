@@ -37,8 +37,8 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
   scope : 'email'
 }));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successfulRedirect : '/',
-  failureRedirect    : '/login'
+  successRedirect : '/',
+  failureRedirect : '/login'
 }));
 
 router.get('/logout', function(req, res) {
@@ -56,6 +56,12 @@ router.get("/items", function(req, res){
 router.get("/lists", function(req, res){
   List.find({}).then(function(lists){
     res.json(lists);
+  });
+});
+
+router.get("/all", function(req, res){
+  User.find({}).then(function(users){
+    res.json(users);
   });
 });
 

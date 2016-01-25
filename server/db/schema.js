@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.createConnection(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:8080/giffter');
+mongoose.createConnection(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/giffter');
 
 var Schema    = mongoose.Schema,
     ObjectId  = Schema.Types.ObjectId;
