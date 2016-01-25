@@ -7,14 +7,14 @@ var express = require('express'),
     mongoose = require('mongoose'),
     hash = require('bcrypt-nodejs'),
     path = require('path'),
-    passport = require('passport'),
-    localStrategy = require('passport-local' ).Strategy;
+    passport = require('passport');
+    // localStrategy = require('passport-local' ).Strategy;
 
 // mongoose
 mongoose.connect('mongodb://localhost/mean-auth');
 
 // user schema/model
-var User = require('./models/user.js');
+// var User = require('./models/user.js');
 
 // create instance of express
 var app = express();
@@ -38,9 +38,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // configure passport
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+require('./config/passport')(passport);
 
 // routes
 app.use('/user/', routes);

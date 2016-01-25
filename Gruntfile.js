@@ -18,11 +18,12 @@ module.exports = function(grunt) {
     },
 
     // CSS TASKS ====================================================
-    // process the less file to style.css
-    less: {
+    // process the sass file to style.css
+
+    sass: {
       build: {
         files: {
-          'client/dist/css/style.css': 'client/src/css/style.less'
+          'client/dist/css/style.css': 'client/src/css/style.sass'
         }
       }
     },
@@ -41,7 +42,7 @@ module.exports = function(grunt) {
     watch: {
       css: {
         files: ['client/src/css/**/*.less'],
-        tasks: ['less', 'cssmin']
+        tasks: ['sass', 'cssmin']
       },
       js: {
         files: ['client/src/js/**/*.js'],
@@ -67,12 +68,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
 
-  grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'uglify', 'concurrent', 'nodemon']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'jshint', 'uglify', 'concurrent', 'nodemon']);
 
 };

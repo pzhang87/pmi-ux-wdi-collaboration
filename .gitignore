@@ -1,2 +1,4 @@
 node_modules
 blog.md
+*.sass-cache
+env.js

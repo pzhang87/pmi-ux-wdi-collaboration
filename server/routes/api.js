@@ -30,6 +30,15 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+// FACEBOOK ROUTES ======================================
+router.get('/auth/facebook', passport.authenticate('facebook', {
+  scope : 'email'
+}));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  successfulRedirect : '/',
+  failureRedirect    : '/login'
+}));
+
 router.get('/logout', function(req, res) {
   req.logout();
   res.status(200).json({status: 'Bye!'});

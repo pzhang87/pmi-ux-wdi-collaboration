@@ -1,7 +1,8 @@
 (function(){
   angular
     .module('gifter', [
-      'ui.router'
+      'ui.router',
+      'ui.bootstrap'
     ])
     .config([
       "$stateProvider",
