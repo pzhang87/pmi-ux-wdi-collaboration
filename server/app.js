@@ -46,7 +46,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/user/', routes);
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../client', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/views', 'index.html'));
 });
 
 // error hndlers
