@@ -44,6 +44,7 @@
       $http.post('/user/login', {username: username, password: password})
 
         .success(function(data, status) {
+          console.log(data.user);
           if (status === 200 && data.status) {
             user = true;
             deferred.resolve();
@@ -81,14 +82,15 @@
         return deferred.promise;
     }
 
-    function register(username, password) {
+    function register(username, password, firstName, lastName, birthday) {
 
       var deferred = $q.defer();
 
       // send post request to the server
-      $http.post('/user/register', {username: username, password: password})
+      $http.post('/user/register', {username: username, password: password, firstName: firstName, lastName: lastName, birthday: birthday})
 
         .success(function(data, status) {
+          console.log(data.user);
           if (status === 200 && data.status) {
             deferred.resolve();
           } else {
