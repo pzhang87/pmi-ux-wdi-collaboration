@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
-    passport = require('passport');
-    User = require('../models/user.js');
+    passport = require('passport'),
+    User = require('../models/user.js'),
+    List = require('../models/list.js')
 
 
 router.post('/register', function(req, res) {
@@ -63,10 +64,27 @@ router.get("/lists", function(req, res){
   });
 });
 
-router.get("/all", function(req, res){
-  User.find({}).then(function(users){
-    res.json(users);
+router.post("/lists", function(req, res){
+  List.create(req.body).then(function(newList){
+    res.json(newList);
+  })
+});
+
+router.get("/lists/:id", function(req, res){
+  console.log(req.params.id)
+  List.find({_id: req.params.id}).then(function(list){
+    res.json(list);
   });
 });
+
+router.put("/lists/:id", function(req, res){
+  List.findByIdAndUpdate(req.params.id, req.body).then(function(list){
+    res.json(list);
+  })
+})
+
+router.delete("/lists/:id", function(req, res){
+  List.findByIdAndRemove(req.params.id)
+})
 
 module.exports = router;
