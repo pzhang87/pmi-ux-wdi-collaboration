@@ -40,6 +40,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // configure passport
 require('./config/passport')(passport);
 
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  console.log(req.user);
+  next();
+});
+
 // routes
 app.use('/user/', routes);
 
