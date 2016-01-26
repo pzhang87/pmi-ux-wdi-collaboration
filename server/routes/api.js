@@ -59,15 +59,18 @@ router.get("/items", function(req, res){
 });
 
 router.get("/lists", function(req, res){
-  List.find({}).then(function(lists){
-    res.json(lists);
-  });
+  User.find({ _id: req.user}).then(function(user){
+    res.json(user)
+  })
 });
 
 router.post("/lists", function(req, res){
-  List.create(req.body).then(function(newList){
-    res.json(newList);
-  })
+User.find({ _id: req.user.id}).then(function(user){
+  console.log("the current user is " + user);
+    user.lists.push(req.body).save();
+  }).then(function(){
+    console.log("hi friends")
+  });
 });
 
 router.get("/lists/:id", function(req, res){

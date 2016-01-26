@@ -1,6 +1,7 @@
 // user model
 var mongoose                = require('mongoose');
 var passportLocalMongoose   = require('passport-local-mongoose');
+var List                    = require('./list')
 
 
 var User = mongoose.Schema({
@@ -16,8 +17,8 @@ var User = mongoose.Schema({
     token: String,
     name: String,
     email: String
-  }
-
+  },
+  lists: [List]
 });
 
 User.plugin(passportLocalMongoose);
