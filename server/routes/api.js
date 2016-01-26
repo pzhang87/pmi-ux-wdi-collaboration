@@ -2,17 +2,21 @@ var express = require('express'),
     router = express.Router(),
     passport = require('passport');
     User = require('../models/user.js');
-    List = require('../models/list.js');
-    Item = require('../models/item.js');
 
 
 router.post('/register', function(req, res) {
-  User.register(new User({ username: req.body.username }), req.body.password, function(err, account) {
+  console.log(req.body);
+  User.register(new User({
+    username  : req.body.username,
+    firstName : req.body.firstName,
+    lastName  : req.body.lastName,
+    birthday  : req.body.birthday
+  }), req.body.password, function(err, user) {
     if (err) {
       return res.status(500).json({err: err});
     }
     passport.authenticate('local')(req, res, function () {
-      return res.status(200).json({status: 'Registration successful!'});
+      return res.status(200).json({status: 'Registration successful!', user: user});
     });
   });
 });
@@ -27,7 +31,7 @@ router.post('/login', function(req, res, next) {
       if (err) {
         return res.status(500).json({err: 'Could not log in user'});
       }
-      res.status(200).json({status: 'Login successful!'});
+      res.status(200).json({status: 'Login successful!', user: user});
     });
   })(req, res, next);
 });
