@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:8080/giffter');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/giffter');
 var UserModel = require("../models/user");
 var ListModel = require("../models/list");
 var ItemModel = require("../models/item");

@@ -13,8 +13,8 @@ var User = new Schema({
     token: String,
     name: String,
     email: String
-  }
-  
+  },
+  lists: []
 });
 
 User.plugin(passportLocalMongoose);

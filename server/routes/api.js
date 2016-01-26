@@ -59,4 +59,27 @@ router.get("/lists", function(req, res){
   });
 });
 
+router.post("/lists", function(req, res){
+  List.create(req.body).then(function(newList){
+    res.json(newList);
+  })
+});
+
+router.get("/lists/:id", function(req, res){
+  console.log(req.params.id)
+  List.find({_id: req.params.id}).then(function(list){
+    res.json(list);
+  });
+});
+
+router.put("/lists/:id", function(req, res){
+  List.findByIdAndUpdate(req.params.id, req.body).then(function(list){
+    res.json(list);
+  })
+})
+
+router.delete("/lists/:id", function(req, res){
+  List.findByIdAndRemove(req.params.id)
+})
+
 module.exports = router;

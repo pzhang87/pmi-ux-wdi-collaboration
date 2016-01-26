@@ -39,7 +39,7 @@
         url: '/register',
         templateUrl: 'src/js/auth/register.html',
         controller: 'registerController',
-        access: {restricted: true}
+        access: {restricted: false}
       })
       .state('one', {
         url: '/one',
