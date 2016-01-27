@@ -59,35 +59,60 @@ router.get("/items", function(req, res){
 });
 
 router.get("/lists", function(req, res){
-  User.find({ _id: req.user}).then(function(user){
-    res.json(user)
+  List.find({ owner: req.user.id}).then(function(lists){
+    res.json(lists)
   })
 });
 
 router.post("/lists", function(req, res){
-User.find({ _id: req.user.id}).then(function(user){
-  console.log("the current user is " + user);
-    user.lists.push(req.body).save();
-  }).then(function(){
-    console.log("hi friends")
-  });
+  List.create({for: req.body.for, owner: req.user.id}).then(function(list){
+    res.json(list)
+  })
 });
 
 router.get("/lists/:id", function(req, res){
-  console.log(req.params.id)
   List.find({_id: req.params.id}).then(function(list){
     res.json(list);
   });
 });
 
+router.put("/lists/:id/addItem", function(req, res){
+  console.log(req.params.id);
+  List.findByIdAndUpdate(req.params.id, {
+    $push: {
+      items: {name: "asdf"}
+    }
+  }, function(err, docs){
+    console.log("error: " + err)
+    if (!err){
+      res.json(docs)
+    }
+  })
+})
+
 router.put("/lists/:id", function(req, res){
-  List.findByIdAndUpdate(req.params.id, req.body).then(function(list){
-    res.json(list);
+  console.log(req.params.id);
+  List.findByIdAndUpdate(req.params.id, {
+    $set: {
+      for: "person"
+    }
+  }, function(err, docs){
+    console.log("error: " + err)
+    if (err){
+      throw err;
+    }
+    res.json(docs);
   })
 })
 
 router.delete("/lists/:id", function(req, res){
-  List.findByIdAndRemove(req.params.id)
+  List.findByIdAndRemove({_id: req.params.id},
+    function(err, docs){
+      if (err){
+        throw err;
+      }
+      else { res.redirect("/lists")}
+    })
 })
 
 module.exports = router;
