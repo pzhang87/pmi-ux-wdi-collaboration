@@ -35,8 +35,8 @@
         controller: 'logoutController',
         access: {restricted: true}
       })
-      .state('register', {
-        url: '/register',
+      .state('signup', {
+        url: '/signup',
         templateUrl: 'src/js/auth/register.html',
         controller: 'registerController',
         access: {restricted: false}
@@ -47,7 +47,7 @@
         access: {restricted: true}
       })
       .state('two', {
-        url: '/two',
+        url: '/profile',
         template: '<h1>This is page two!</h1>',
         access: {restricted: false}
       });
