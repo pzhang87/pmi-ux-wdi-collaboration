@@ -1,18 +1,23 @@
 var express = require('express'),
     router = express.Router(),
-    passport = require('passport');
-    User = require('../models/user.js');
-    List = require('../models/list.js');
-    Item = require('../models/item.js');
+    passport = require('passport'),
+    User = require('../models/user.js'),
+    List = require('../models/list.js')
 
 
 router.post('/register', function(req, res) {
-  User.register(new User({ username: req.body.username }), req.body.password, function(err, account) {
+  console.log(req.body);
+  User.register(new User({
+    username  : req.body.username,
+    firstName : req.body.firstName,
+    lastName  : req.body.lastName,
+    birthday  : req.body.birthday
+  }), req.body.password, function(err, user) {
     if (err) {
       return res.status(500).json({err: err});
     }
     passport.authenticate('local')(req, res, function () {
-      return res.status(200).json({status: 'Registration successful!'});
+      return res.status(200).json({status: 'Registration successful!', user: user});
     });
   });
 });
@@ -27,7 +32,7 @@ router.post('/login', function(req, res, next) {
       if (err) {
         return res.status(500).json({err: 'Could not log in user'});
       }
-      res.status(200).json({status: 'Login successful!'});
+      res.status(200).json({status: 'Login successful!', user: user});
     });
   })(req, res, next);
 });
@@ -37,8 +42,8 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
   scope : 'email'
 }));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successfulRedirect : '/',
-  failureRedirect    : '/login'
+  successRedirect : '/',
+  failureRedirect : '/login'
 }));
 
 router.get('/logout', function(req, res) {
@@ -54,32 +59,60 @@ router.get("/items", function(req, res){
 });
 
 router.get("/lists", function(req, res){
-  List.find({}).then(function(lists){
-    res.json(lists);
-  });
+  List.find({ owner: req.user.id}).then(function(lists){
+    res.json(lists)
+  })
 });
 
 router.post("/lists", function(req, res){
-  List.create(req.body).then(function(newList){
-    res.json(newList);
+  List.create({for: req.body.for, owner: req.user.id}).then(function(list){
+    res.json(list)
   })
 });
 
 router.get("/lists/:id", function(req, res){
-  console.log(req.params.id)
   List.find({_id: req.params.id}).then(function(list){
     res.json(list);
   });
 });
 
+router.put("/lists/:id/addItem", function(req, res){
+  console.log(req.params.id);
+  List.findByIdAndUpdate(req.params.id, {
+    $push: {
+      items: {name: "asdf"}
+    }
+  }, function(err, docs){
+    console.log("error: " + err)
+    if (!err){
+      res.json(docs)
+    }
+  })
+})
+
 router.put("/lists/:id", function(req, res){
-  List.findByIdAndUpdate(req.params.id, req.body).then(function(list){
-    res.json(list);
+  console.log(req.params.id);
+  List.findByIdAndUpdate(req.params.id, {
+    $set: {
+      for: "person"
+    }
+  }, function(err, docs){
+    console.log("error: " + err)
+    if (err){
+      throw err;
+    }
+    res.json(docs);
   })
 })
 
 router.delete("/lists/:id", function(req, res){
-  List.findByIdAndRemove(req.params.id)
+  List.findByIdAndRemove({_id: req.params.id},
+    function(err, docs){
+      if (err){
+        throw err;
+      }
+      else { res.redirect("/lists")}
+    })
 })
 
 module.exports = router;

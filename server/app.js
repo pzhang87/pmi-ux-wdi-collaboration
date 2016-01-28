@@ -8,6 +8,7 @@ var express = require('express'),
     hash = require('bcrypt-nodejs'),
     path = require('path'),
     passport = require('passport');
+    List = require('./models/list')
     // localStrategy = require('passport-local' ).Strategy;
 
 // mongoose
@@ -40,12 +41,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 // configure passport
 require('./config/passport')(passport);
 
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  console.log(req.user);
+  next();
+});
+
 // routes
 app.use('/user/', routes);
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/views', 'index.html'));
 });
+
+app.get('/lists', function(req, res){
+  List.find({}).then(function(lists){
+    res.json(lists)
+  })
+})
 
 // error hndlers
 app.use(function(req, res, next) {

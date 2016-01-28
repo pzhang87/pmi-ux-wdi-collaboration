@@ -1,17 +1,40 @@
-<div class="col-md-4">
-  <h1>Register</h2>
-  <div data-ng-show="error" class="alert alert-danger"></div>
-  <form class="form" data-ng-submit="register()">
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" data-ng-model="registerForm.username" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-        <input type="password" class="form-control" name="password" data-ng-model="registerForm.password" required>
-      </div>
-      <div>
-        <button type="submit" class="btn btn-default" data-ng-disabled="disabled">Register</button>
-      </div>
-  </form>
-</div>
+<section class="row">
+  <h3 class="col-md-12 text-center">Signup</h3>
+  <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
+    <form class="form-horizontal" data-ng-submit="register()">
+      <fieldset>
+        <div class="alert alert-danger form-group" data-ng-show="error">{{errorMessage}}</div>
+        <div class="form-group input-group-lg">
+          <input type="text" class="form-control" name="firstName" placeholder="First Name" data-ng-model="registerForm.firstName" required>
+        </div>
+        <div class="form-group input-group-lg">
+          <input type="text" class="form-control" name="lastName" placeholder="Last Name" data-ng-model="registerForm.lastName" required>
+        </div>
+        <div class="form-group input-group-lg">
+          <input type="text" class="form-control" placeholder="Email" name="username" data-ng-model="registerForm.username" required>
+        </div>
+        <div class="form-group input-group-lg">
+          <input type="password" class="form-control" name="password" placeholder="Password" data-ng-model="registerForm.password" required>
+        </div>
+        <div class="form-group">
+          <div class="input-group input-group-lg">
+            <input type="text" class="form-control" uib-datepicker-popup data-ng-model="registerForm.birthday" is-open="popup2.opened" alt-input-formats="altInputFormats" placeholder="Birthday: mm/dd/yyy" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+          </div>
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-success btn-lg btn-block" data-ng-disabled="disabled">Register</button>
+        </div>
+        <div class="text-center form-group">
+          <a href="/user/auth/facebook" class="btn btn-social btn-facebook btn-lg btn-block"><span class="fa fa-facebook"></span> Register with Facebook</a>
+        </div>
+        <div>
+          Already have an account?
+          <a data-ui-sref="login">Login</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+[
+  {
+    "username" : "andre@codedre.com",
+    "password" : "String",
+    "firstName": "Andre",
+    "lastName" : "Shonubi",
+    "birthday" : "07/23/1989",
+    "facebook" : {
+      "id"    : "String",
+      "token" : "String",
+      "name"  : "Andre Johnson",
+      "email" : "andre@codedre.com"
+    }
+  }
+]
