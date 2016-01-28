@@ -30,5 +30,85 @@
       font-style: italic; }
       .list-panel ul li:hover {
         color: blue; }
+  }
+
+  main {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    position: relative
+  }
+
+  .about {
+    width: 80%
+  }
+
+  #nav-img {
+    width: 2em
+  }
+
+  .navbar-brand {
+    padding: .4em
+  }
+
+
+  #create-lists {
+    background-color: #eeeeee;
+    padding: 0.3em;
+    margin-bottom: 0.5em;
+  }
+
+  #create-lists h2 {
+    font-size: 1.3em;
+    color: #888888
+  }
+
+  #how-it-works {
+    background-color: #eeeeee;
+    padding: 0.3em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+  }
+
+  #how-it-works h2 {
+    font-size: 1.3em;
+    color: #888888
+  }
+
+  #profile-form {
+    width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1em
+  }
+
+  #profile-form label {
+    text-align: right
+  }
+
+  #profile-form input {
+    margin-bottom: 1em;
+  }
+
+  #submit-profile{
+    margin-top: 2em
+  }
+
+  #social-media-icon {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+  }
+
+  #push {
+    height: 1em;
+  }
+
+  footer {
+    position: relative;
+    left:0;
+    right:0;
+    bottom: 1em;
+    height: 2em;
+    margin-top: 0.5em;
+  }
 
 /*# sourceMappingURL=style.css.map */
