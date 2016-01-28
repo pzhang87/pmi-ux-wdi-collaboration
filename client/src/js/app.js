@@ -41,14 +41,14 @@
         controller: 'registerController',
         access: {restricted: false}
       })
-      .state('one', {
-        url: '/one',
-        template: '<h1>This is page one!</h1>',
-        access: {restricted: true}
+      .state('about', {
+        url: '/about',
+        templateUrl: 'src/partials/about.html',
+        access: {restricted: false}
       })
-      .state('two', {
+      .state('profile', {
         url: '/profile',
-        template: '<h1>This is page two!</h1>',
+        templateUrl: 'src/partials/profile.html',
         access: {restricted: false}
       });
 
