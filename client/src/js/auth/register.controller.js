@@ -22,7 +22,7 @@
 
       AuthService.register($scope.registerForm.username, $scope.registerForm.password,$scope.registerForm.firstName,$scope.registerForm.lastName,$scope.registerForm.birthday)
         .then(function() {
-          $location.path('/');
+          $location.path('/dashboard');
           $scope.disabled = false;
           $scope.registerForm = {};
         })
