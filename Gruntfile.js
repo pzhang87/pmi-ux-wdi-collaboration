@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         files: {
-          'public/dist/css/style.min.css': 'client/dist/css/style.css'
+          'client/dist/css/style.min.css': 'client/dist/css/style.css'
         }
       }
     },
@@ -41,12 +41,18 @@ module.exports = function(grunt) {
     // watch css and js files and process the above tasks
     watch: {
       css: {
-        files: ['client/src/css/**/*.less'],
-        tasks: ['sass', 'cssmin']
+        files: ['client/src/css/**/*.sass'],
+        tasks: ['sass', 'cssmin'],
+        options: {
+          livereload: true,
+        }
       },
       js: {
         files: ['client/src/js/**/*.js'],
-        tasks: ['jshint', 'uglify']
+        tasks: ['jshint', 'uglify'],
+        options: {
+          livereload: true,
+        }
       }
     },
 
