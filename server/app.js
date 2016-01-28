@@ -12,7 +12,7 @@ var express = require('express'),
     // localStrategy = require('passport-local' ).Strategy;
 
 // mongoose
-mongoose.connect('mongodb://127.0.0.1/giffter');
+mongoose.connect('mongodb://127.0.0.1:27017/giffter');
 
 // user schema/model
 // var User = require('./models/user.js');

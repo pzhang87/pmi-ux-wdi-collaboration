@@ -1,3 +1,4 @@
+
 // require("./schema");
 var mongoose = require("mongoose");
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/beacon');
@@ -33,7 +34,7 @@ db.once("open", function () {
       process.exit();
     });
   });
-  
+
   Item.remove({}).then(function(){
     forEach(itemData, function(itemDatum){
       return new Item(itemDatum).save();
