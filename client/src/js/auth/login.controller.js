@@ -21,7 +21,7 @@
       // call login from service
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         .then(function() {
-          $location.path('/');
+          $location.path('/dashboard');
           $scope.disabled = false;
           $scope.loginForm = {};
         })

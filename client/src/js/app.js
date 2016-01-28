@@ -35,20 +35,15 @@
         controller: 'logoutController',
         access: {restricted: true}
       })
-      .state('register', {
-        url: '/register',
+      .state('signup', {
+        url: '/signup',
         templateUrl: 'src/js/auth/register.html',
         controller: 'registerController',
         access: {restricted: false}
       })
-      .state('one', {
-        url: '/one',
-        template: '<h1>This is page one!</h1>',
-        access: {restricted: true}
-      })
-      .state('two', {
-        url: '/two',
-        template: '<h1>This is page two!</h1>',
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'src/js/dashboard/dashboard.html',
         access: {restricted: false}
       });
 
