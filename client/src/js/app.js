@@ -41,14 +41,9 @@
         controller: 'registerController',
         access: {restricted: false}
       })
-      .state('one', {
-        url: '/one',
-        template: '<h1>This is page one!</h1>',
-        access: {restricted: true}
-      })
-      .state('two', {
-        url: '/profile',
-        template: '<h1>This is page two!</h1>',
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'src/js/dashboard/dashboard.html',
         access: {restricted: false}
       });
 
