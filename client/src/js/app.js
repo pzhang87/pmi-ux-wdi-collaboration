@@ -41,10 +41,19 @@
         controller: 'registerController',
         access: {restricted: false}
       })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'src/partials/about.html',
+        access: {restricted: false}
+      })
+      .state('profile', {
+        url: '/profile',
+        templateUrl: 'src/partials/profile.html',
+        access: {restricted: false}
+      })
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'src/js/dashboard/dashboard.html',
-        access: {restricted: false}
       });
 
     $urlRouterProvider.otherwise('/');
