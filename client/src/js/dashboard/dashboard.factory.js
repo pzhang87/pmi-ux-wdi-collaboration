@@ -7,6 +7,6 @@
     ]);
 
   function FactoryFunction($resource) {
-    return $resource("/user/lists")
+    // return $resource("/user/lists");
   }
 })();
