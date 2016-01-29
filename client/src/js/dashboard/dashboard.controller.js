@@ -10,10 +10,10 @@
 
   function ControllerFunction($http, $state) {
     console.log("im here");
-    $http.get('/user/lists')
+    $http.get('http://localhost:8080/user/lists')
 
       .success( function(data) {
-        this.lists = data;
+        // this.lists = data;
         console.log(data);
       })
 

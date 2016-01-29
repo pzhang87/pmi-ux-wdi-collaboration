@@ -56,9 +56,9 @@ app.get('/', function(req, res) {
 
 app.get('/lists', function(req, res){
   List.find({}).then(function(lists){
-    res.json(lists)
-  })
-})
+    res.json(lists);
+  });
+});
 
 // error hndlers
 app.use(function(req, res, next) {

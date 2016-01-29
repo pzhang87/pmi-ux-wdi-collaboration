@@ -59,7 +59,9 @@ router.get("/items", function(req, res){
 });
 
 router.get("/lists", function(req, res){
+  console.log("I was here");
   List.find({ owner: req.user.id}).then(function(lists){
+    console.log(lists);
     res.json(lists);
   });
 });

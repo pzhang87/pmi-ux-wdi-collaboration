@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title>Gift Engine</title>
+
+  <base href="http://localhost:8080/" />
+
   <link rel="icon" href="src/images/Favicon-box.png">
 
   <!-- styles -->
@@ -35,7 +38,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img id="nav-img" src="src/images/Gift-Engine-Left.png">
       </a>
     </div>
@@ -44,8 +47,9 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" class="text-uppercase">Gift Ideas</a></li>
-        <li><a href="/#/about" class="text-uppercase">About</a></li>
-        <li><a href="/#/profile" class="text-uppercase">Profile</a></li>
+        <li><a href="/dashboard" class="text-uppercase">Dashboard</a></li>
+        <li><a href="/about" class="text-uppercase">About</a></li>
+        <li><a href="/profile" class="text-uppercase">Profile</a></li>
         <li uib-dropdown on-toggle="toggled(open)">
           <a href id="simple-dropdown" uib-dropdown-toggle>LOGIN <span class="caret"></span></a>
           <ul id="login-dp" uib-dropdown-menu aria-labelledby="single-dropdown" class="dropdown-menu">

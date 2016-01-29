@@ -6,7 +6,8 @@
     ])
     .config([
       "$stateProvider",
-      "$urlRouterProvider",
+      "$locationProvider",
+      // "$urlRouterProvider",
       RouterFunciton
     ])
     .run([
@@ -17,7 +18,10 @@
       RunFunction
     ]);
 
-  function RouterFunciton($stateProvider, $urlRouterProvider) {
+  function RouterFunciton($stateProvider, $locationProvider) {
+
+    $locationProvider.html5Mode(true);
+
     $stateProvider
       .state('home', {
         url: '/',
@@ -59,7 +63,7 @@
         access: {restricted: false}
       });
 
-    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.otherwise('/');
   }
 
 
