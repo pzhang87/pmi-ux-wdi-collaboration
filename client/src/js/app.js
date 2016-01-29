@@ -1,7 +1,6 @@
 (function(){
   angular
     .module('gifter', [
-      'dashboard',
       'ui.router',
       'ui.bootstrap'
     ])

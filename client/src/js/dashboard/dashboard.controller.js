@@ -1,15 +1,25 @@
 (function() {
   "use strict";
   angular
-    .module('dashboard')
+    .module('gifter')
     .controller('DashboardController', [
-      'DashboardFactory',
+      '$http',
       '$state',
       ControllerFunction
     ]);
 
-  function ControllerFunction(DashboardFactory, $state) {
-    this.lists = DashboardFactory.query();
-    console.log(this.lists);
+  function ControllerFunction($http, $state) {
+    console.log("im here");
+    $http.get('/user/lists')
+
+      .success( function(data) {
+        this.lists = data;
+        console.log(data);
+      })
+
+      .error( function() {
+        console.log('Error: ' + data);
+      });
+
   }
 }());
