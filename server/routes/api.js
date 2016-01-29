@@ -2,7 +2,7 @@ var express = require('express'),
     router = express.Router(),
     passport = require('passport'),
     User = require('../models/user.js'),
-    List = require('../models/list.js')
+    List = require('../models/list.js');
 
 
 router.post('/register', function(req, res) {
@@ -60,14 +60,14 @@ router.get("/items", function(req, res){
 
 router.get("/lists", function(req, res){
   List.find({ owner: req.user.id}).then(function(lists){
-    res.json(lists)
-  })
+    res.json(lists);
+  });
 });
 
 router.post("/lists", function(req, res){
   List.create({for: req.body.for, owner: req.user.id}).then(function(list){
-    res.json(list)
-  })
+    res.json(list);
+  });
 });
 
 router.get("/lists/:id", function(req, res){
@@ -83,12 +83,12 @@ router.put("/lists/:id/addItem", function(req, res){
       items: {name: "asdf"}
     }
   }, function(err, docs){
-    console.log("error: " + err)
+    console.log("error: " + err);
     if (!err){
-      res.json(docs)
+      res.json(docs);
     }
-  })
-})
+  });
+});
 
 router.put("/lists/:id", function(req, res){
   console.log(req.params.id);
@@ -97,13 +97,13 @@ router.put("/lists/:id", function(req, res){
       for: "person"
     }
   }, function(err, docs){
-    console.log("error: " + err)
+    console.log("error: " + err);
     if (err){
       throw err;
     }
     res.json(docs);
-  })
-})
+  });
+});
 
 router.delete("/lists/:id", function(req, res){
   List.findByIdAndRemove({_id: req.params.id},
@@ -111,8 +111,8 @@ router.delete("/lists/:id", function(req, res){
       if (err){
         throw err;
       }
-      else { res.redirect("/lists")}
-    })
-})
+      else { res.redirect("/lists");}
+    });
+});
 
 module.exports = router;

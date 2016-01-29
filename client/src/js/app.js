@@ -1,6 +1,7 @@
 (function(){
   angular
     .module('gifter', [
+      'dashboard',
       'ui.router',
       'ui.bootstrap'
     ])
@@ -54,6 +55,9 @@
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'src/js/dashboard/dashboard.html',
+        contorller: 'DashboardController',
+        controllerAs: 'DashboardVM',
+        access: {restricted: false}
       });
 
     $urlRouterProvider.otherwise('/');

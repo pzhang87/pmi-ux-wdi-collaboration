@@ -8,16 +8,17 @@
         restrict: 'E',
         replace: true,
         scope: {
-          list: '=',
+          lists: '=',
           vm: '='
         },
+        // controller: 'DashboardController',
         link: function (scope, element, attrs) {
-          scope.list = [
-            {name : 'Mom'},
-            {name : 'Dad'},
-            {name : 'Uncle Joe'},
-            {name : 'Peter'}
-          ];
+          // scope.list = [
+          //   {name : 'Mom'},
+          //   {name : 'Dad'},
+          //   {name : 'Uncle Joe'},
+          //   {name : 'Peter'}
+          // ];
         }
       };
     });
