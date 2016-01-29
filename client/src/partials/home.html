@@ -3,7 +3,14 @@
 
   <div id="create-lists" class="text-center">
     <h2 class="text-uppercase">Create Lists</h2>
-    <p class="lead">Get started creating lists</p>
+    <!-- <p class="lead">Get started creating lists</p> -->
+    <p>
+    <form action="/user/lists" method="post">
+      <p class="lead">Create new list:</p>
+      <input type="text" name="for"><br>
+      <input type="submit" value="Submit" class="btn">
+    </form>
+    </p>
   </div>
 
   <div id="how-it-works" class="text-center">
